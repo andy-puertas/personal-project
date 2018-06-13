@@ -8,15 +8,28 @@ const express = require('express')
 const app = express();
 app.use( bodyParser.json() );
 
+
 // make cart part of sessions
 // 
 
 const { 
     SERVER_PORT,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    SESSION_SECRET
 } = process.env
 
+
+app.use(
+    session({
+      secret: SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true
+    })
+);
+
+
 app.get('/api/events', ctrl.read)
+app.post('/api/resgister', ctrl.create)
 
 
 massive(CONNECTION_STRING)

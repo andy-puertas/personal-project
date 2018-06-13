@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+    text-align: left;
+    padding-top: 5px;
+    
+}
+
+.logo {
+    height: 65px;
+    width: 65px;
+    padding-left: 25px;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import Event from '../Event/Event'
+//import axios from 'axios';
+import Event from '../Event/Event';
 
 export default class CalendarNav extends Component {
     constructor(props){
@@ -9,6 +9,8 @@ export default class CalendarNav extends Component {
             events: []
         }
     }
+
+    
 
     render() {
         return(

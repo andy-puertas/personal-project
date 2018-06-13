@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Event (props){
     let {artist, date, time, price, img} = props.event;
-    console.log(props)
         return(
             <div>
                 <img src={img} alt='logo' />

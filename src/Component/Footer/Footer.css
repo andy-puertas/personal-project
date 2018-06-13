@@ -1,0 +1,21 @@
+.footer-container {
+    height: 30vh;
+    width: 100;
+    background: rgba(202, 94, 5, 0.747);
+    color: white;
+}
+
+.telly {
+    padding-top: 25px;
+    font-weight: 100;
+}
+
+.address {
+    font-weight: 100;
+    font-size: 80%;
+}
+
+.copyright {
+    font-weight: 100;
+    font-size: .75em;
+}

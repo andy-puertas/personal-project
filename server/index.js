@@ -29,7 +29,7 @@ app.use(
 
 
 app.get('/api/events', ctrl.read)
-app.post('/api/resgister', ctrl.create)
+app.post('/api/register', ctrl.create)
 
 
 massive(CONNECTION_STRING)

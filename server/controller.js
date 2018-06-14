@@ -19,6 +19,6 @@ module.exports = {
           res.status(200).send(id, username, email)
           .catch(() => res.status(500).send('error') ) ;
         });
-      }
+    },
     
 }

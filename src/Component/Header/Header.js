@@ -5,10 +5,24 @@ import './Header.css';
 
 export default function Header() {
     return(
-        <div className='container'>
+        <div className='header-container'>
             <Link to='/'>
                 <img className='logo' src={logo} alt='logo'/>
             </Link>
+            <nav>
+                <section className='menu-row'>
+                    <Link to='/'>
+                        <div>HOME</div>
+                    </Link>
+                    
+                    <Link to='/venue'>
+                        <div>VENUE INFO </div>
+                    </Link>
+                    <div>FAQ</div>
+                    <div>CART</div>
+                </section>
+            </nav>
+
             <hr />
 
         </div>

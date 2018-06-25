@@ -41,7 +41,6 @@
 }
 
 .price {
-    font-weight: bold;
     margin-right: 2px;
     padding-left: 15px;
 }
@@ -60,6 +59,7 @@
     padding: 10px 25px;
     margin-top: 15px;
     font-size: 16px;
+   
 }
 
 .details-button {
@@ -69,4 +69,5 @@
     padding: 10px 25px;
     margin-top: 8px;
     font-size: 16px;
+   
 }

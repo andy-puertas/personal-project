@@ -3,9 +3,9 @@
 
 -- CREATE TABLE users (  
 --     id SERIAL PRIMARY KEY,
---     username varchar(20),
---     password varchar(20),
---     email TEXT 
+--     email varchar(25),
+--     password varchar(25),
+--     
 -- )
 
 
@@ -19,8 +19,10 @@
 
 -- CREATE TABLE cart (
 --     id SERIAL PRIMARY KEY,
---     eventID integer references (events),
---     userID integer references (users)
+--     eventID INTEGER,     
+--     quantity INTEGER DEFAULT 1,
+--     FOREIGN KEY () REFERENCES
+--     FOREIGN KEY () REFERENCES
 -- )
 
 

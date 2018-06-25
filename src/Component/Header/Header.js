@@ -9,6 +9,9 @@ export default function Header() {
             <Link to='/'>
                 <img className='logo' src={logo} alt='logo'/>
             </Link>
+            <div className='search-box-container'>
+                <input class='search-box' placeholder='Search' />
+            </div>
             <nav>
                 <section className='menu-row'>
                     <Link to='/'>
@@ -18,10 +21,15 @@ export default function Header() {
                     <Link to='/venue'>
                         <div>VENUE INFO </div>
                     </Link>
+                    
                     <div>FAQ</div>
-                    <div>CART</div>
+
+                    <Link to ='/cart'>
+                        <div>CART</div>
+                    </Link>
                 </section>
             </nav>
+            
 
             <hr />
 

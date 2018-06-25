@@ -9,14 +9,14 @@ module.exports = {
 
     create: (req, res) => {
         const db = req.app.get('db');
-        const { username, password, email } = req.body;
+        const { email, password } = req.body;
         
       
-        db.create_user([username, password, email])
+        db.create_user([email, password])
         .then((dbRes) => {
-          const { id, username, email } = dbRes[0];
-          req.session.userid = username;
-          res.status(200).send(id, username, email)
+          const { id, email } = dbRes[0];
+          req.session.userid = email;
+          res.status(200).send(id, email)
           .catch(() => res.status(500).send('error') ) ;
         });
     },

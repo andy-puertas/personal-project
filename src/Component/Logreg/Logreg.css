@@ -1,0 +1,10 @@
+.log-container{
+    width: 50%;
+    background-color: white;
+    color: black;
+}
+
+input {
+    border: 2px solid black;
+    box-sizing: border-box;
+}

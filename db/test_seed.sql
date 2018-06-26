@@ -3,8 +3,8 @@
 
 -- CREATE TABLE users (  
 --     id SERIAL PRIMARY KEY,
---     email varchar(25),
---     password varchar(25),
+--     email varchar(200),
+--     password varchar(200),
 --     
 -- )
 

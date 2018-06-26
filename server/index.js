@@ -4,8 +4,10 @@ const express = require('express')
     , massive = require('massive') 
     , session = require('express-session')
     , ctrl = require('../server/controller')
-    , cors = require('cors');
-    
+    , cors = require('cors')
+    , checkUserSession = require('./middleware/checkUserSession');
+
+
 const app = express();
 app.use( bodyParser.json() );
 app.use(cors())
@@ -28,10 +30,13 @@ app.use(
     })
 );
 
+app.use(checkUserSession);
+
 
 app.get('/api/events', ctrl.read)
 app.get('/api/events/:id', ctrl.detail)
-app.post('/api/register', ctrl.create)
+app.post('/api/login', ctrl.loginUser)
+app.post('/api/register', ctrl.registerUser)
 
 
 massive(CONNECTION_STRING)

@@ -1,3 +1,6 @@
+const bcrypt = require('bcryptjs')
+var session_id_count = 1;
+
 module.exports = {
     read: (req, res) => {
         const db = req.app.get('db');
@@ -15,18 +18,50 @@ module.exports = {
         .catch( () => res.status(500).send('error') );
     },
 
-    create: (req, res) => {
-        const db = req.app.get('db');
-        const { email, password } = req.body;
-        
-      
-        db.create_user([email, password])
-        .then((dbRes) => {
-          const { id, email } = dbRes[0];
-          req.session.userid = email;
-          res.status(200).send(id, email)
-          .catch(() => res.status(500).send('error') ) ;
-        });
+    registerUser: (req, res) => {
+        const { email, password } = req.body
+        const db = req.app.get('db')
+        db.check_email([email]).then(user => {
+            console.log(user)
+            if (user.length !== 0) {
+                res.status(200).send('Email Taken. Try another.')
+            } else {
+                const salt = bcrypt.genSaltSync(10)
+                console.log('salt: ', salt)
+                const hash = bcrypt.hashSync(password, salt)
+                console.log('hash: ', hash)
+
+                db.create_user([email, hash]).then((user) => {
+                    req.session.user.session_id = session_id_count
+                    session_id_count++
+                    req.session.user.id = user[0].id
+                    req.session.user.email = user[0].email
+                    console.log('Registered: ', req.session)
+                    res.status(200).send()
+                })
+            }
+        })
     },
+
+    loginUser: (req, res) => {
+        const { email, password } = req.body
+        const db = req.app.get('db')
+        db.check_email([email]).then(user => {
+            if (user.length !== 0) {
+                const validPassword = bcrypt.compareSync(password, user[0].password)
+                if (validPassword) {
+                    req.session.user.session_id = session_id_count
+                    session_id_count++
+                    req.session.user.id = user[0].id
+                    req.session.user.email = user[0].email
+                    res.status(200).send()
+                } else {
+                    res.status(200).send('Invalid Password')
+                }
+            } else {
+                res.status(200).send('Email does not exist')
+            }
+        })
+    }
     
 }

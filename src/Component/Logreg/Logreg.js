@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import './Logreg.css';
 
 export default class Logreg extends Component {
@@ -6,7 +7,9 @@ export default class Logreg extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: '',
+            loggedIn: ''
         }
         this.handleEmail = this.handleEmail.bind( this )
         this.handlePassword = this.handlePassword.bind( this )
@@ -24,6 +27,39 @@ export default class Logreg extends Component {
         })
     }
 
+    login() {
+        const {email, password} = this.state
+        if(email && password) {
+          axios.post('/api/login', {email: email.toLowerCase(), password: password}).then(res => {
+            console.log(res.data)
+            if (res.data.length !== 0) {
+                        this.setState({ error: res.data })
+                    } else {
+                        this.setState({loggedIn: 'You signed in successfully!', error: ''})
+                    }
+          })
+        } else {
+          this.setState({error: 'Please fill in both fields'})
+        }
+    }
+
+    register() {
+        const {email, password} = this.state
+        if(email && password) {
+          axios.post('/api/register', {email: email.toLowerCase(), password: password}).then(res => {
+            if (res.data.length !== 0) {
+              console.log(res.data)
+                        this.setState({ error: res.data })
+                    } else {
+                        this.setState({loggedIn: 'You are now registered and have logged in successfully!', error: ''})
+                    }
+          })
+        } else {
+          this.setState({error: 'Please fill in both fields'})
+        }
+    }
+
+
 
     render() {
         console.log(this.state)
@@ -40,10 +76,16 @@ export default class Logreg extends Component {
                 <p>Password:</p>
                 <input onChange={(e) => {this.handlePassword(e.target.value)}} type='password' />
 
+                <br /><br />
+                
+                <button className='login-button' onClick={() => this.login()}>Login</button>
+                <button className='register-button' onClick={() => this.register()}>Register</button>
                 <br />
-                <br />
-                <button className='login-button'>Login</button>
-                <button className='register-button'>Register</button>
+
+                <h4>{this.state.error}</h4>
+                <h2>{this.state.loggedIn}</h2>
+
+
             </div>
 
         )

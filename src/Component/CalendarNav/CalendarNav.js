@@ -10,6 +10,7 @@ export default class CalendarNav extends Component {
             events: []
         }
         this.getEvents = this.getEvents.bind( this )
+        // this.addToCart = this.addToCart.bind( this )
     }
 
     componentDidMount() {
@@ -24,6 +25,13 @@ export default class CalendarNav extends Component {
             })
         })
     }
+
+    // addToCart(cart) {
+    //     axios.post('/api/ticket')
+    //     .then(res => {
+    //         cart: res.data
+    //     })
+    // }
 
     
 

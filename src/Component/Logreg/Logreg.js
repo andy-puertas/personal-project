@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getUser} from '../../ducks/reducer';
 import axios from 'axios';
 import './Logreg.css';
 
-export default class Logreg extends Component {
+class Logreg extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,6 +38,7 @@ export default class Logreg extends Component {
                         this.setState({ error: res.data })
                     } else {
                         this.setState({loggedIn: 'You signed in successfully!', error: ''})
+                        this.props.getUser(res.data)
                     }
           })
         } else {
@@ -52,6 +55,7 @@ export default class Logreg extends Component {
                         this.setState({ error: res.data })
                     } else {
                         this.setState({loggedIn: 'You are now registered and have logged in successfully!', error: ''})
+                        this.props.getUser(res.data);
                     }
           })
         } else {
@@ -90,3 +94,5 @@ export default class Logreg extends Component {
         )
     }
 }
+
+export default connect(null, { getUser })(Logreg)

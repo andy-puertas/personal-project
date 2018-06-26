@@ -32,16 +32,18 @@ export default class Logreg extends Component {
 
             <div className='log-container'>
                 <h3>Sign In!</h3>
-                <p>Email:</p>
+                
+                <p>Email:</p> 
                 <input onChange={(e) => {this.handleEmail(e.target.value)}} type='text' />
+                
 
                 <p>Password:</p>
                 <input onChange={(e) => {this.handlePassword(e.target.value)}} type='password' />
 
                 <br />
                 <br />
-                <button>Login</button>
-                <button>Register</button>
+                <button className='login-button'>Login</button>
+                <button className='register-button'>Register</button>
             </div>
 
         )

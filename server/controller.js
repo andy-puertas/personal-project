@@ -7,6 +7,14 @@ module.exports = {
         .catch( () => res.status(500).send('error') );
     },
 
+    detail: (req, res) => {
+        const db = req.app.get('db');
+
+        db.event_details([req.params.id])
+        .then( events => res.status(200).send( events ) )
+        .catch( () => res.status(500).send('error') );
+    },
+
     create: (req, res) => {
         const db = req.app.get('db');
         const { email, password } = req.body;

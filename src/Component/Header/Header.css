@@ -2,7 +2,7 @@
     width: 100%;
     text-align: left;
     padding-top: 5px;
-    
+    color: white;
 }
 
 .logo {
@@ -16,10 +16,15 @@
     flex-direction: row;
     justify-content: space-around;
     font-size: 12px;
+    color: white;
 }
 
 .search-box-container {
     float: right;
     padding-right: 10px;
     padding-top: 10px;
+}
+
+#home-link {
+    border-right: 2px solid white;
 }

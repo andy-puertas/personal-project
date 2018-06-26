@@ -7,7 +7,7 @@ export default function Event (props){
     let {id, artist, date, time, price, img} = props.event;
         return(
             <div className='event-container'>
-                <div className='image'>
+                <div className='image-container'>
                     <img src={img} alt='logo' />
                 </div>
 

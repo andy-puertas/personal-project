@@ -3,11 +3,12 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , massive = require('massive') 
     , session = require('express-session')
-    , ctrl = require('../server/controller');
+    , ctrl = require('../server/controller')
+    , cors = require('cors');
     
 const app = express();
 app.use( bodyParser.json() );
-
+app.use(cors())
 
 // make cart part of sessions
 // 
@@ -29,6 +30,7 @@ app.use(
 
 
 app.get('/api/events', ctrl.read)
+app.get('/api/events/:id', ctrl.detail)
 app.post('/api/register', ctrl.create)
 
 

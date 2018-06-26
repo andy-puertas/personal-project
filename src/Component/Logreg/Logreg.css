@@ -8,3 +8,19 @@ input {
     border: 2px solid black;
     box-sizing: border-box;
 }
+
+.login-button {
+    color: white;
+    background-color: #009973;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 13px;
+}
+
+.register-button {
+    color: white;
+    background-color: #994d00;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 13px;
+}

@@ -62,6 +62,24 @@ module.exports = {
                 res.status(200).send('Email does not exist')
             }
         })
+    },
+
+    ticket: (req, res) => {
+        const db = req.app.get('db');
+        const {eventid, userid} = req.body;
+
+        db.get_ticket([eventid, userid])
+        .then( cart => res.status(200).send( cart ) )
+        .catch( () => res.status(500).send('error') );
+    },
+
+    view: (req, res) => {
+        
+        const db = req.app.get('db');
+        db.view_cart([req.session.user.id])
+        .then( cart => res.status(200).send( cart ) )
+        .catch( () => res.status(500).send('error') );
+
     }
     
 }

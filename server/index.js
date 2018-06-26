@@ -35,9 +35,10 @@ app.use(checkUserSession);
 
 app.get('/api/events', ctrl.read)
 app.get('/api/events/:id', ctrl.detail)
+app.get('/api/cart', ctrl.view)
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
-
+app.post('/api/ticket', ctrl.ticket)
 
 massive(CONNECTION_STRING)
   .then(dbInstance => {

@@ -80,7 +80,6 @@ export default class Logreg extends Component {
                 
                 <button className='login-button' onClick={() => this.login()}>Login</button>
                 <button className='register-button' onClick={() => this.register()}>Register</button>
-                <br />
 
                 <h4>{this.state.error}</h4>
                 <h2>{this.state.loggedIn}</h2>

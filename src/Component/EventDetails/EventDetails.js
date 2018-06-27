@@ -23,8 +23,10 @@ export default class EventDetails extends Component {
             })
         } )
     }
+    
 
     render () {
+        console.log(this.state.eventDetail)
         // let eventDetail = this.state.eventDetail.map( element => {
         //     return (
         //         <div>
@@ -37,7 +39,7 @@ export default class EventDetails extends Component {
         return(
             <div>
                 {this.props.match.params.id}
-                {/* {eventDetail} */}
+                 {/* {eventDetail} */}
             </div>
         )
     }

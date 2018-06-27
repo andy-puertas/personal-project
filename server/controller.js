@@ -37,7 +37,7 @@ module.exports = {
                     req.session.user.id = user[0].id
                     req.session.user.email = user[0].email
                     console.log('Registered: ', req.session)
-                    res.status(200).send()
+                    res.status(200).send(user)
                 })
             }
         })
@@ -54,7 +54,8 @@ module.exports = {
                     session_id_count++
                     req.session.user.id = user[0].id
                     req.session.user.email = user[0].email
-                    res.status(200).send()
+                    res.status(200).send(user)
+                    console.log(req.session.user)
                 } else {
                     res.status(200).send('Invalid Password')
                 }

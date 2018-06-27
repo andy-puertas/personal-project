@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './Event.css';
 //import axios from 'axios';
 
-export default function Event (props){
+export default function Event (props) {
 
     console.log(props)
     let {id, artist, date, time, price, img} = props.event;

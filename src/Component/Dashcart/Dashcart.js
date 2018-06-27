@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Dashcart.css'
 
 export default class DashCart extends Component {
     constructor() {
@@ -17,6 +18,7 @@ export default class DashCart extends Component {
             })
         })
     }
+    
 
 
     render() {

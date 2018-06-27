@@ -8,6 +8,7 @@ class Logreg extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: 0,
             email: '',
             password: '',
             error: '',
@@ -30,37 +31,35 @@ class Logreg extends Component {
     }
 
     login() {
-        const {email, password} = this.state
+        const {id, email, password} = this.state
         if(email && password) {
-          axios.post('/api/login', {email: email.toLowerCase(), password: password}).then(res => {
+          axios.post('/api/login', {id: id, email: email.toLowerCase(), password: password}).then(res => {
             console.log(res.data)
             if (res.data.length !== 0) {
-                        this.setState({ error: res.data })
-                    } else {
+                        //this.setState({ error: res.data })
                         this.setState({loggedIn: 'You signed in successfully!', error: ''})
-                        this.props.getUser(res.data)
-                    }
+                        this.props.getUser(res.data);
+                    } 
           })
-        } else {
-          this.setState({error: 'Please fill in both fields'})
-        }
+            } else {
+            this.setState({error: 'Please fill in both fields'})
+            }
     }
 
     register() {
-        const {email, password} = this.state
+        const {id, email, password} = this.state
         if(email && password) {
-          axios.post('/api/register', {email: email.toLowerCase(), password: password}).then(res => {
+          axios.post('/api/register', {id: id, email: email.toLowerCase(), password: password}).then(res => {
             if (res.data.length !== 0) {
               console.log(res.data)
-                        this.setState({ error: res.data })
-                    } else {
+                        // this.setState({ error: res.data })
                         this.setState({loggedIn: 'You are now registered and have logged in successfully!', error: ''})
                         this.props.getUser(res.data);
-                    }
+                    } 
           })
-        } else {
-          this.setState({error: 'Please fill in both fields'})
-        }
+            } else {
+            this.setState({error: 'Please fill in both fields'})
+            }
     }
 
 

@@ -20,7 +20,7 @@ export default function reducer(state=initialState, action) {
             } );
 
         case UPDATE_CART:
-            return Object.assign({}, state, {
+            return Object.assign( {}, state, {
                 userid: payload.userid,
                 eventid: payload.eventid,
                 quantity: payload.quantity
@@ -31,25 +31,23 @@ export default function reducer(state=initialState, action) {
 }
 
 export function getUser(id, email) {
-    console.log(id, email)
+    console.log(id[0].email)
     return {
       type: GET_USER,
-      payload: {
-        id,
-        email   
-      }
+      payload: 
+        id[0]
+        //email   
+      
     }
 }
 
-export function updateCart(userid, eventid, quantity) {
-    console.log(userid, eventid, quantity)
+export function updateCart(cartTicket) {
+    const {userid, eventid, quantity } = cartTicket
+    console.log(cartTicket)
     return {
         type: UPDATE_CART,
-        payload: {
-            userid,
-            eventid,
-            quantity
-        }
+        payload: 
+            cartTicket
     }
 }
 

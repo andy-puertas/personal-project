@@ -74,6 +74,8 @@
 -- INSERT INTO events (artist, date, time, img, eventinfo)
 -- VALUES ('', '', '', '', '')
 
+-- db.'name of table'.insert(req.body.cart).then
+-- manipulate array of items sent from front end
 
 
 -- Quantity check

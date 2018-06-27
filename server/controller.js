@@ -67,11 +67,14 @@ module.exports = {
 
     ticket: (req, res) => {
         const db = req.app.get('db');
-        const {eventid, userid} = req.body;
+        const {eventid, id, quantity} = req.body.cartTicket;
+        console.log(req.body, id)
 
-        db.get_ticket([eventid, userid])
+        db.get_ticket([eventid, id, quantity])
         .then( cart => res.status(200).send( cart ) )
-        .catch( () => res.status(500).send('error') );
+        .catch( (err) => { 
+            console.log(err)
+            res.status(500).send('error') });
     },
 
     view: (req, res) => {

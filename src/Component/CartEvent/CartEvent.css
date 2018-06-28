@@ -1,5 +1,5 @@
 .event-order {
-    width: 350px;
+    width: 70%;
     height: 100%;
     margin: 10px auto;
     padding-top: 40px;
@@ -9,7 +9,13 @@
 
 .cart-description {
     /* display: flex; */
-    float: left;
+    float: center;
+}
+
+.pic-container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
 }
 
 #cart-pic {

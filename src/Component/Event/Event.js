@@ -39,8 +39,8 @@ class Event extends Component {
         let {id, artist, date, time, price, img} = this.props.event;
             return(
                 <div className='event-container'>
-                    <div className='image-container'>
-                        <img src={img} alt='logo' />
+                    <div className='event-image-container'>
+                        <img className='event-img' src={img} alt='logo' />
                     </div>
 
                     <div className='event-title'>

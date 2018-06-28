@@ -1,7 +1,12 @@
 .cart-container {
     width: 90%;
     height: 100%;
-    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    /* margin-right: 5px; */
     color: black;
     background-color: white;
+    border-radius: 6px;
+    padding: 5px 5px;
 }

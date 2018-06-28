@@ -7,8 +7,8 @@ export default class Venue extends Component {
     render () {
         return (
             <div className='venue-container'>
-                <img src={pic} alt='logo' />
-                <h4>VENUE INFORMATION</h4>
+                <img className='venue-img' src={pic} alt='logo' />
+                <h4>VENUE INFORMATION</h4> < br />
                 <p>The Depot is a 1200 person capacity, four story venue. The basement contains the dressing 
                     rooms and offices The music hall is located on the second and third floors There is NO PYRO 
                     ALLOWED in the venue Hazers—please contact house production The Depot is a NO SMOKING VENUE. 

@@ -11,7 +11,12 @@ export default class CartEvent extends Component {
     render() {
         const { id, artist, date, time, price, img } = this.props.item
         return (
-            <div className='event-order'>
+            <div className='event-order'>            
+                
+                <div className='pic-container'>
+                        <img id='cart-pic' src={img} alt='logo' />
+                </div>
+                
                 <div>
                     <h3 id='artist-title'>{artist}</h3>
                 </div>
@@ -21,9 +26,6 @@ export default class CartEvent extends Component {
                     <p id='cart-price'>${price}</p>
                 </div>
 
-                <div className='pic-container'>
-                        <img id='cart-pic' src={img} alt='logo' />
-                </div>
                 < br />
                 <button>Quantity: 1</button>
                 <button className='delete-button' onClick={() => this.props.delete(id)}>Remove</button>

@@ -37,7 +37,7 @@ class Logreg extends Component {
             console.log(res.data)
             if (res.data.length !== 0) {
                         //this.setState({ error: res.data })
-                        this.setState({loggedIn: 'You signed in successfully!', error: ''})
+                        this.setState({loggedIn: 'You are now signed in!', error: ''})
                         this.props.getUser(res.data);
                     } 
           })

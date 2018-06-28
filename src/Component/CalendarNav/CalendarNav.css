@@ -1,5 +1,6 @@
-h2 {
+#calendar-header {
     text-align: left;
     font-weight: 1000;
-    padding-left: 15px;
+    padding-left: 1px;
+    margin: auto;
 }

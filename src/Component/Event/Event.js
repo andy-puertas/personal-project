@@ -26,6 +26,7 @@ class Event extends Component {
             axios.post('/api/ticket', {cartTicket})
             .then( res => {
                 this.props.updateCart(cartTicket);
+                alert('Added to cart!')
                 //this.props.history.push('/cart')
             }).catch('err')
         }
@@ -45,6 +46,8 @@ class Event extends Component {
                     <div className='event-title'>
                         <p className='artist'>{artist}</p>
                     </div>
+
+                    <br />
 
                     <div className='event-description'>
                         <p className='date'>{date}</p> 

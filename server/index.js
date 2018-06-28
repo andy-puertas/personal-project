@@ -37,8 +37,11 @@ app.get('/api/events', ctrl.read)
 app.get('/api/events/:id', ctrl.detail)
 app.get('/api/cart', ctrl.view)
 app.post('/api/login', ctrl.loginUser)
+app.put('/api/cart/:id', ctrl.quant)
 app.post('/api/register', ctrl.registerUser)
 app.post('/api/ticket', ctrl.ticket)
+app.delete('/api/ticket/:id', ctrl.delete)
+
 
 massive(CONNECTION_STRING)
   .then(dbInstance => {

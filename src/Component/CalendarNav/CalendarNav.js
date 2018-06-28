@@ -48,8 +48,8 @@ export default class CalendarNav extends Component {
         
         
         return(
-            <div>
-                <h2>EVENT CALENDAR</h2>
+            <div className=''>
+                <h2 id='calender-header'>EVENT CALENDAR</h2>
                 {/* <Event /> */}
                 {events}
             </div>

@@ -1,2 +1,2 @@
 DELETE FROM cart
-WHERE id=$1;
+WHERE userid = $1 AND eventid = $2;

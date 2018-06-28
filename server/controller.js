@@ -77,6 +77,17 @@ module.exports = {
             res.status(500).send('error') });
     },
 
+    delete: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const {userid, eventid} = req.params;
+
+        dbInstance.delete_ticket([userid, eventid])
+        .then( cart => res.status(200).send( cart ) )
+        .catch( (err) => {
+            console.log(err)
+            res.status(500).send('error')} );
+    },
+
     view: (req, res) => {
         
         const db = req.app.get('db');
@@ -84,6 +95,17 @@ module.exports = {
         .then( cart => res.status(200).send( cart ) )
         .catch( () => res.status(500).send('error') );
 
+    },
+
+    quant: (req, res) => {
+        const {quantity, userid} = req.body
+        const db = req.app.get('db');
+        
+        db.update_quantity([quantity, userid])
+        .then( cart => res.status(200).send( cart ))
+        .catch( (err) => { 
+            console.log(err)
+            res.status(500).send('error') });
     }
     
 }

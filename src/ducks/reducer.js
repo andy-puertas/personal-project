@@ -8,6 +8,7 @@ const initialState = {
 
 const GET_USER = 'GET_USER';
 const UPDATE_CART = 'UPDATE_CART';
+const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
 
 export default function reducer(state=initialState, action) {
     let {type, payload} = action
@@ -25,6 +26,12 @@ export default function reducer(state=initialState, action) {
                 eventid: payload.eventid,
                 quantity: payload.quantity
             } );
+        
+        case UPDATE_QUANTITY:
+            return Object.assign( {}, state, {
+                quantity: payload.quantity
+            } );
+
         default:
             return state;    
     }
@@ -48,6 +55,14 @@ export function updateCart(cartTicket) {
         type: UPDATE_CART,
         payload: 
             cartTicket
+    }
+}
+
+export function updateQuantity(quantity) {
+    return {
+        type: UPDATE_QUANTITY,
+        payload:
+            quantity
     }
 }
 

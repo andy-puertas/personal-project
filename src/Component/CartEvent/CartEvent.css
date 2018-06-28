@@ -1,0 +1,27 @@
+.event-order {
+    width: 350px;
+    height: 100%;
+    margin: 10px auto;
+    padding-top: 40px;
+    background-color: lightgrey;
+    border: solid 1px;
+}
+
+.cart-description {
+    /* display: flex; */
+    float: left;
+}
+
+#cart-pic {
+    width: 20%;
+    float: left;
+}
+
+.delete-button {
+    color: white;
+    background-color: #994d00;
+    border-radius: 5px;
+    width: 70px;
+    padding: 5px 15px;
+}
+    

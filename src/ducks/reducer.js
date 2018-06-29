@@ -1,3 +1,5 @@
+//import axios from 'axios';
+
 const initialState = {
     id: 0,
     email: '',
@@ -9,6 +11,7 @@ const initialState = {
 const GET_USER = 'GET_USER';
 const UPDATE_CART = 'UPDATE_CART';
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
+const DELETE_CART = 'DELETE_CART'
 
 export default function reducer(state=initialState, action) {
     let {type, payload} = action
@@ -22,8 +25,8 @@ export default function reducer(state=initialState, action) {
 
         case UPDATE_CART:
             return Object.assign( {}, state, {
-                userid: payload.userid,
                 eventid: payload.eventid,
+                userid: payload.userid,
                 quantity: payload.quantity
             } );
         
@@ -31,6 +34,12 @@ export default function reducer(state=initialState, action) {
             return Object.assign( {}, state, {
                 quantity: payload.quantity
             } );
+        
+        case DELETE_CART + '_FULFILLED':
+            return Object.assign({}, state, {
+                userid: payload.userid,
+                eventid: payload.eventid
+            } )
 
         default:
             return state;    
@@ -49,12 +58,24 @@ export function getUser(id, email) {
 }
 
 export function updateCart(cartTicket) {
-    const {userid, eventid, quantity } = cartTicket
+    //const {userid, eventid, quantity } = cartTicket
     console.log(cartTicket)
     return {
         type: UPDATE_CART,
         payload: 
             cartTicket
+    }
+}
+
+export function deleteCart(userid, eventid) {
+    
+    console.log(userid, eventid)
+    return {
+        type: DELETE_CART,
+        payload:
+            userid,
+            eventid
+            
     }
 }
 
@@ -65,4 +86,5 @@ export function updateQuantity(quantity) {
             quantity
     }
 }
+
 

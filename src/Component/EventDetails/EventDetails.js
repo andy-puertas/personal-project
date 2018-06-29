@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-//import Event from '../Event/Event';
+import Event from '../Event/Event';
 
 export default class EventDetails extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export default class EventDetails extends Component {
         // let eventDetail = this.state.eventDetail.map( element => {
         //     return (
         //         <div>
-        //             <Event eventDetail={element} key={element.id} />
+        //             <Event eventDetail={element} id={element.id} />
         //         </div>
         //     )
         // })

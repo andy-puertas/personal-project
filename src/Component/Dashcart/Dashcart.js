@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {deleteCart} from '../../ducks/reducer';
 import axios from 'axios';
-import CartEvent from '../CartEvent/CartEvent'
+import CartEvent from '../CartEvent/CartEvent';
 import './Dashcart.css';
 
-export default class DashCart extends Component {
+class Dashcart extends Component {
     constructor() {
         super();
         this.state = {
@@ -26,10 +28,12 @@ export default class DashCart extends Component {
         })
     }
     
-    delete(id) {
-        axios.delete(`/api/ticket/${id}`)
-        .then( res => this.getCart())
+    async delete(id) {
+        await axios.delete(`/api/ticket/${id}`)
+            .then( res => res.data)
+             this.getCart();
     }
+
     
 
 
@@ -39,7 +43,7 @@ export default class DashCart extends Component {
                 <div>
                     <CartEvent 
                         item={element}
-                        key={element.id}
+                        id={element.id}
                         delete={this.delete}
                     />
                 </div>
@@ -58,3 +62,12 @@ export default class DashCart extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        userid: state.userid,
+        eventid: state.eventid
+    }
+}
+
+export default connect(mapStateToProps, {deleteCart})(Dashcart)

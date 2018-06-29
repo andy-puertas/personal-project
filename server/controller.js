@@ -22,7 +22,7 @@ module.exports = {
         const { email, password } = req.body
         const db = req.app.get('db')
         db.check_email([email]).then(user => {
-            console.log(user)
+            //console.log(user)
             if (user.length !== 0) {
                 res.status(200).send('Email Taken. Try another.')
             } else {
@@ -55,7 +55,7 @@ module.exports = {
                     req.session.user.id = user[0].id
                     req.session.user.email = user[0].email
                     res.status(200).send(user)
-                    console.log(req.session.user)
+                    //console.log(req.session.user)
                 } else {
                     res.status(200).send('Invalid Password')
                 }
@@ -68,7 +68,7 @@ module.exports = {
     ticket: (req, res) => {
         const db = req.app.get('db');
         const {eventid, id, quantity} = req.body.cartTicket;
-        console.log(req.body, id)
+        //console.log(req.body, id)
 
         db.get_ticket([eventid, id, quantity])
         .then( cart => res.status(200).send( cart ) )
@@ -78,10 +78,12 @@ module.exports = {
     },
 
     delete: (req, res) => {
-        const dbInstance = req.app.get('db');
+        const db = req.app.get('db');
         const {userid, eventid} = req.params;
 
-        dbInstance.delete_ticket([userid, eventid])
+        console.log(req.session)
+
+        db.delete_ticket(req.session.user.id, req.params.id)
         .then( cart => res.status(200).send( cart ) )
         .catch( (err) => {
             console.log(err)

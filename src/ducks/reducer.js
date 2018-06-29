@@ -5,12 +5,14 @@ const initialState = {
     email: '',
     eventid: 0,
     userid: 0,
-    quantity: 1
+    quantity: 1,
+    total: 0
 }
 
 const GET_USER = 'GET_USER';
 const UPDATE_CART = 'UPDATE_CART';
-const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
+const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 const DELETE_CART = 'DELETE_CART'
 
 export default function reducer(state=initialState, action) {
@@ -27,13 +29,23 @@ export default function reducer(state=initialState, action) {
             return Object.assign( {}, state, {
                 eventid: payload.eventid,
                 userid: payload.userid,
-                quantity: payload.quantity
+                quantity: payload.quantity,
+                total: state.total += action.price
             } );
         
-        case UPDATE_QUANTITY:
+        case INCREASE_QUANTITY:
             return Object.assign( {}, state, {
-                quantity: payload.quantity
+                quantity: ++state.quantity,
+                userid: payload.userid,
+                eventid: payload.eventid
             } );
+
+        case DECREASE_QUANTITY:
+            return Object.assign({}, state, {
+                quantity: --state.quantity,
+                userid: payload.user,
+                eventid: payload.eventid
+            })    
         
         case DELETE_CART + '_FULFILLED':
             return Object.assign({}, state, {
@@ -79,12 +91,24 @@ export function deleteCart(userid, eventid) {
     }
 }
 
-export function updateQuantity(quantity) {
+export function increaseQuantity(quantity) {
+    console.log(quantity)
     return {
-        type: UPDATE_QUANTITY,
+        type: INCREASE_QUANTITY,
         payload:
             quantity
     }
 }
+
+export function decreaseQuantity(quantity) {
+    console.log(quantity)
+    return {
+        type: DECREASE_QUANTITY,
+        payload:
+            quantity
+    }
+}
+
+
 
 

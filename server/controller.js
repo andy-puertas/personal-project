@@ -68,7 +68,7 @@ module.exports = {
     ticket: (req, res) => {
         const db = req.app.get('db');
         const {eventid, id, quantity} = req.body.cartTicket;
-        //console.log(req.body, id)
+        console.log(req.body, id)
 
         db.get_ticket([eventid, id, quantity])
         .then( cart => res.status(200).send( cart ) )
@@ -83,7 +83,7 @@ module.exports = {
 
         console.log(req.session)
 
-        db.delete_ticket(req.session.user.id, req.params.id)
+        db.delete_ticket([req.session.user.id, req.params.id])
         .then( cart => res.status(200).send( cart ) )
         .catch( (err) => {
             console.log(err)
@@ -100,10 +100,10 @@ module.exports = {
     },
 
     quant: (req, res) => {
-        const {quantity, userid} = req.body
+        const {quantity, userid, eventid} = req.params
         const db = req.app.get('db');
         
-        db.update_quantity([quantity, userid])
+        db.update_quantity([req.params])
         .then( cart => res.status(200).send( cart ))
         .catch( (err) => { 
             console.log(err)

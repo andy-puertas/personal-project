@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Event from '../Event/Event';
+//import Event from '../Event/Event';
 
 export default class EventDetails extends Component {
     constructor(props) {

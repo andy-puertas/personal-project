@@ -9,7 +9,7 @@ export default class CartEvent extends Component {
 
 
     render() {
-        const { id, artist, date, time, price, img } = this.props.item
+        const { id, artist, date, time, price, img, quantity } = this.props.item
         return (
             <div className='event-order'>            
                 
@@ -27,8 +27,14 @@ export default class CartEvent extends Component {
                 </div>
 
                 < br />
-                <button>Quantity: 1</button>
-                <button className='delete-button' onClick={() => this.props.delete(id)}>Remove</button>
+                <p>Quantity: {quantity}</p>
+
+                <div className='cart-button-container'>
+                    <button className='inc-button' onClick={() => this.props.increase}> + </button>
+                    <button className='dec-button' onClick={() => this.props.decrease} > - </button>
+                    
+                    <button className='delete-button' onClick={() => this.props.delete(id)}>Remove</button>
+                </div>
             </div>
         )
     }

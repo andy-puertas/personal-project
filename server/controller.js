@@ -100,11 +100,17 @@ module.exports = {
     },
 
     quant: (req, res) => {
-        const {quantity, userid, eventid} = req.params
+        const {quantity, eventid} = req.body
+        const {id} = req.params;
+         
         const db = req.app.get('db');
+        console.log('console log:', req.params, req.body)
         
-        db.update_quantity([req.params])
-        .then( cart => res.status(200).send( cart ))
+        
+        db.update_quantity([quantity, req.session.user.id, eventid])
+        .then( cart => {
+            console.log( cart )
+            res.status(200).send( cart )})
         .catch( (err) => { 
             console.log(err)
             res.status(500).send('error') });

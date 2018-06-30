@@ -35,9 +35,8 @@ export default function reducer(state=initialState, action) {
         
         case INCREASE_QUANTITY:
             return Object.assign( {}, state, {
-                quantity: ++state.quantity,
-                userid: payload.userid,
-                eventid: payload.eventid
+                quantity: payload.quantity + 1
+                
             } );
 
         case DECREASE_QUANTITY:
@@ -50,7 +49,8 @@ export default function reducer(state=initialState, action) {
         case DELETE_CART + '_FULFILLED':
             return Object.assign({}, state, {
                 userid: payload.userid,
-                eventid: payload.eventid
+                eventid: payload.eventid,
+                total: state.total -= action.price
             } )
 
         default:

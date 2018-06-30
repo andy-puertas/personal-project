@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 // import {deleteCart} from '../../ducks/reducer';
-// import {increaseQuantity} from '../../ducks/reducer';
-// import {decreaseQuantity} from '../../ducks/reducer';
+import {increaseQuantity} from '../../ducks/reducer';
+import {decreaseQuantity} from '../../ducks/reducer';
 import axios from 'axios';
 import CartEvent from '../CartEvent/CartEvent';
 import './Dashcart.css';
@@ -12,14 +12,15 @@ class Dashcart extends Component {
         super(props);
         this.state = {
             cart: [],
-            total: 0
+            total: 0,
+            
         }
 
         this.getCart = this.getCart.bind( this )
         this.delete = this.delete.bind( this )
         this.calcTotal = this.calcTotal.bind( this )
-        //this.incQuant = this.incQuant.bind( this)
-        //this.decQuant = this.decQuant.bind( this )
+        this.incQuant = this.incQuant.bind( this)
+        this.decQuant = this.decQuant.bind( this )
     }
 
     componentDidMount() {
@@ -44,32 +45,41 @@ class Dashcart extends Component {
     }
 
     
-    // incQuant(id) {
-    //    axios.put(`/api/cart/${id}`)
-    //        .then( res => res.data)
-    //        this.props.increaseQuantity()
-    // }
+    incQuant( quantity, eventid) {
+        console.log(quantity, eventid)
+       axios.put(`/api/cart/`, {quantity: ++quantity, eventid})
+           .then( res => 
+            {
+                console.log(res.data)
+                this.props.increaseQuantity(res.data[0].quantity)
+                }
+            )
+            this.calcTotal()
+    }
 
-    // decQuant(id) {
-    //        axios.put(`/api/cart/${id}`)
-    //        .then( res => res.data)
-    //        this.props.decreaseQuantity()
+    decQuant(id) {
+           axios.put(`/api/cart/${id}` )
+           .then( res => res.data)
+           this.props.decreaseQuantity(this.props.quantity)
 
-    // }
+    }
 
     calcTotal(){
+        //console.log(this.state.total)
         let cartTotal = 0
         for(let i = 0; i < this.state.cart.length; i++ ){
-            cartTotal += +this.state.cart[i].price * this.state.cart[i].quant
+            cartTotal += (+this.state.cart[i].price * this.state.cart[i].quantity)
         } this.setState({
             total: cartTotal
         })
+        //console.log(cartTotal)
     }
 
     
 
 
     render() {
+        console.log(this.props)
         let order = this.state.cart.map( element => {
             return(
                 <div>
@@ -77,8 +87,8 @@ class Dashcart extends Component {
                         item={element}
                         id={element.id}
                         delete={this.delete}
-                        // decQuant={this.decrease}
-                        // incQuant={this.increase}
+                        decrease={this.decQuant}
+                        increase={this.incQuant}
                     />
                 </div>
             )
@@ -91,7 +101,7 @@ class Dashcart extends Component {
                 <div className='cart-container'>
                     {order} 
 
-                <p>Total: {this.state.total}</p>    
+                <p>Total: ${this.state.total}</p>    
                     <button>Checkout</button>
                 </div>
             </div>
@@ -103,8 +113,9 @@ function mapStateToProps(state) {
     return {
         userid: state.userid,
         eventid: state.eventid,
-        quantity: state.quantity
+        quantity: state.quantity,
+        total: state.total
     }
 }
 
-export default connect(mapStateToProps)(Dashcart)
+export default connect(mapStateToProps,{increaseQuantity, decreaseQuantity})(Dashcart)

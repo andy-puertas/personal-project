@@ -8,7 +8,10 @@
 
 }
 
-
+column {
+  display: flex;
+  flex-direction: column
+}
 
 .App-header {
   background-color: #222;

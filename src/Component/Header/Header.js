@@ -22,6 +22,7 @@ export default function Header() {
                         <div id='info-link'>VENUE INFO </div>
                     </Link>
                     
+                    
                     <div>FAQ</div>
 
                     <Link to ='/cart'>

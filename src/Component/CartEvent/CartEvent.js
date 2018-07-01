@@ -8,7 +8,8 @@ export default class CartEvent extends Component {
         this.state = {
             quantity: 1
         }
-        this.localIncrease = this.localIncrease.bind(this )
+        this.localIncrease = this.localIncrease.bind( this )
+        this.localDecrease = this.localDecrease.bind( this )
     }
 
     componentDidMount() {
@@ -21,6 +22,13 @@ export default class CartEvent extends Component {
         this.props.increase(this.state.quantity, this.props.item.eventid)
         this.setState({
             quantity: this.state.quantity + 1
+        })
+    }
+
+    localDecrease() {
+        this.props.decrease(this.state.quantity, this.props.item.eventid)
+        this.setState({
+            quantity: this.state.quantity - 1
         })
     }
 
@@ -51,7 +59,7 @@ export default class CartEvent extends Component {
 
                 <div className='cart-button-container'>
                     <button className='inc-button' onClick={() => this.localIncrease()}> + </button>
-                    <button className='dec-button' onClick={() => this.props.decrease(id, quantity, eventid)} > - </button>
+                    <button className='dec-button' onClick={() => this.localDecrease()} > - </button>
                     
                     <button className='delete-button' onClick={() => this.props.delete(id)}>Remove</button>
                 </div>

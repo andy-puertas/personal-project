@@ -3,20 +3,17 @@
 
 
 .slide-container {
-    height: 100%;
+    height: 75vh;
     width: 100%;
     margin: auto;
+    background-color:rgb(219, 208, 208);
 }
 
 .slide {
-    height: 30%;
+    height: 40%;
     width: 100%;
     margin: auto;
-    padding-top: 10px;
 
 }
 
-.buttons {
-    color:white
-}
 

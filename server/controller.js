@@ -115,7 +115,7 @@ module.exports = {
             console.log(err)
             res.status(500).send('error') });
     },
-    stripe: (req, res, next) => {
+    "stripe": (req, res, next) => {
         //convert amount to pennies
         console.log(req)
         console.log(req.session)
@@ -150,15 +150,14 @@ module.exports = {
             if (err) return res.sendStatus(500)
             console.log(req.params)
             const db = req.app.get('db');
-            const { id } = req.params
-            //  const { user_id } = req.user
-            db.cart_clear([id])
+            
+            db.cart_clear([req.session.user.id])
                 .then(cart => res.status(200).send(cart))
-
-            // if (err && err.type === 'StripeCardError') {
-            //   // The card has been declined
-            // }
-        });
+            });
+        }
+        
     }
-    
-}
+            
+            
+
+           

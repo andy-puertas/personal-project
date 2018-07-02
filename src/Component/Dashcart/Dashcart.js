@@ -5,6 +5,7 @@ import {increaseQuantity} from '../../ducks/reducer';
 import {decreaseQuantity} from '../../ducks/reducer';
 import axios from 'axios';
 import CartEvent from '../CartEvent/CartEvent';
+import StripeCheckout from 'react-stripe-checkout'
 import './Dashcart.css';
 
 class Dashcart extends Component {
@@ -81,6 +82,14 @@ class Dashcart extends Component {
         //console.log(cartTotal)
     }
 
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post(`/api/payment/${this.state.id}`, { token, amount: this.state.total /* the amount actually charged*/ })
+            .then(res => {
+                this.setState({ alertToggle: true })
+            });
+    }
+
     
 
 
@@ -107,8 +116,12 @@ class Dashcart extends Component {
                 <div className='cart-container'>
                     {order} 
 
-                <p>Total: ${this.state.total}</p>    
-                    <button>Checkout</button>
+                <p>Total: ${this.state.total}.00</p>
+                <br />    
+                <StripeCheckout
+                    token={this.onToken}
+                    stripeKey={'pk_test_ZkVDbaxn9DyyTJBKkRPjSV9S'}
+                    amount={this.state.total * 100} />
                 </div>
             </div>
         )

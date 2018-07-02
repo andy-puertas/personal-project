@@ -45,6 +45,7 @@ app.post('/api/login', ctrl.loginUser)
 app.put('/api/cart', ctrl.quant)
 app.post('/api/register', ctrl.registerUser)
 app.post('/api/ticket', ctrl.ticket)
+app.post('/api/payment/:id', ctrl.stripe)
 app.delete('/api/ticket/:id', ctrl.delete)
 
 

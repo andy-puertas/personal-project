@@ -6,7 +6,7 @@
     height: 75vh;
     width: 100%;
     margin: auto;
-    background-color:rgb(219, 208, 208);
+    background-color: lightgray;
 }
 
 .slide {
@@ -16,4 +16,27 @@
 
 }
 
+.slide-1 {
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+.slide-3 {
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+.slide-4 {
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+.slide-5 {
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
 

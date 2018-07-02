@@ -27,19 +27,19 @@ export default class Slideshow extends Component {
       <div className='slide-container'>
         <Slider {...settings}>
           <div>
-            <img className='slide' src={s1} alt='logo' />
+            <img className='slide-1' src={s1} alt='logo' />
           </div>
           <div>
             <img className='slide' src={s2} alt='logo' />
           </div>
           <div>
-            <img className='slide' src={s3} alt='logo' />
+            <img className='slide-3' src={s3} alt='logo' />
           </div>
           <div>
-            <img className='slide' src={s4} alt='logo' />
+            <img className='slide-4' src={s4} alt='logo' />
           </div>
           <div>
-            <img className='slide' src={s5} alt='logo'/>
+            <img className='slide-5' src={s5} alt='logo'/>
           </div>
 
           {/* <div className='button-container'>

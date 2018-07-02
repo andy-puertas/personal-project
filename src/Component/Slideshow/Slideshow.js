@@ -17,7 +17,7 @@ export default class Slideshow extends Component {
         infinite: true,
         speed: 900,
         autoplay: true,
-        autoplayspeed: 2500,
+        autoplayspeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1
       };
@@ -41,6 +41,10 @@ export default class Slideshow extends Component {
           <div>
             <img className='slide' src={s5} alt='logo'/>
           </div>
+
+          {/* <div className='button-container'>
+
+          </div> */}
           
         </Slider>
       </div>

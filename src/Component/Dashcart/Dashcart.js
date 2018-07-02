@@ -5,7 +5,7 @@ import {increaseQuantity} from '../../ducks/reducer';
 import {decreaseQuantity} from '../../ducks/reducer';
 import axios from 'axios';
 import CartEvent from '../CartEvent/CartEvent';
-import StripeCheckout from 'react-stripe-checkout'
+import StripeCheckout from 'react-stripe-checkout';
 import './Dashcart.css';
 
 class Dashcart extends Component {

@@ -19,9 +19,10 @@
 }
 
 #cart-pic {
-    width: 20%;
+    width: 40%;
     float: left;
 }
+
 
 .delete-button {
     color: white;

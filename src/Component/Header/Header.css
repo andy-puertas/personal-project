@@ -26,5 +26,22 @@
 }
 
 #home-link {
-    border-right: 2px solid white;
+    color: white;
+    text-decoration: none;
+    /* border-right: 2px solid white; */
+}
+
+#info-link {
+    color: white;
+    text-decoration: none;
+}
+
+#faq-link {
+    color: white;
+    text-decoration: none;
+}
+
+#cart-link {
+    color: white;
+    text-decoration: none
 }

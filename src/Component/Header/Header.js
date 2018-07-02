@@ -15,18 +15,19 @@ export default function Header() {
             <nav>
                 <section className='menu-row'>
                     <Link to='/'>
-                        <div id='home-link'>HOME</div>
+                        <a id='home-link'>HOME</a>
                     </Link>
                     
                     <Link to='/venue'>
-                        <div id='info-link'>VENUE INFO </div>
+                        <a id='info-link'>VENUE INFO </a>
                     </Link>
                     
-                    
-                    <div>FAQ</div>
+                    <Link to='/faq' >
+                        <a id='faq-link'>FAQ</a>
+                    </Link>
 
                     <Link to ='/cart'>
-                        <div id='cart-link'>CART</div>
+                        <a id='cart-link'>CART</a>
                     </Link>
                 </section>
             </nav>

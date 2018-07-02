@@ -21,7 +21,9 @@ app.use(cors())
 const { 
     SERVER_PORT,
     CONNECTION_STRING,
-    SESSION_SECRET
+    SESSION_SECRET,
+    STRIPE_PUBLISH,
+    STRIPE_SECRET
 } = process.env
 
 

@@ -47,14 +47,15 @@ class Dashcart extends Component {
     
     incQuant( quantity, eventid) {
         console.log(quantity, eventid)
-       axios.put(`/api/cart/`, {quantity: ++quantity, eventid})
+        axios.put(`/api/cart/`, {quantity: ++quantity, eventid})
            .then( res => 
             {
                 console.log(res.data)
                 this.props.increaseQuantity(res.data[0].quantity)
-                }
-            )
-            //this.calcTotal()
+            }
+        )
+        this.getCart()
+        this.calcTotal()
     }
 
     decQuant(quantity, eventid) {
@@ -65,6 +66,8 @@ class Dashcart extends Component {
                 this.props.decreaseQuantity(res.data[0].quantity)
             }
         )
+        this.getCart()
+        this.calcTotal()
     }
 
     calcTotal(){

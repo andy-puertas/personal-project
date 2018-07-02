@@ -9,9 +9,9 @@ export default function Header() {
             <Link to='/'>
                 <img className='logo' src={logo} alt='logo'/>
             </Link>
-            <div className='search-box-container'>
-                <input class='search-box' placeholder='Search' />
-            </div>
+            {/* <div className='search-box-container'> */}
+                {/* <input class='search-box' placeholder='Search' /> */}
+            {/* </div> */}
             <nav>
                 <section className='menu-row'>
                     <Link to='/'>

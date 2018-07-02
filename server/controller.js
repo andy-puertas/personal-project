@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 var session_id_count = 1;
 
 module.exports = {
+
     read: (req, res) => {
         const db = req.app.get('db');
         
@@ -115,49 +116,32 @@ module.exports = {
             console.log(err)
             res.status(500).send('error') });
     },
-    "stripe": (req, res, next) => {
-        //convert amount to pennies
-        console.log(req)
-        console.log(req.session)
 
-        const amountArray = req.body.amount.toString().split('');
-        const pennies = [];
-        for (var i = 0; i < amountArray.length; i++) {
-            if (amountArray[i] === ".") {
-                if (typeof amountArray[i + 1] === "string") {
-                    pennies.push(amountArray[i + 1]);
-                } else {
-                    pennies.push("0");
-                }
-                if (typeof amountArray[i + 2] === "string") {
-                    pennies.push(amountArray[i + 2]);
-                } else {
-                    pennies.push("0");
-                }
-                break;
-            } else {
-                pennies.push(amountArray[i])
-            }
-        }
-        const convertedAmt = parseInt(pennies.join(''));
+    stripe: (req, res, next) => {
+            //convert amount to pennies
+            console.log(req)
+            console.log(req.session)
 
-        const charge = stripe.charges.create({
-            amount: convertedAmt, // amount in cents, again
-            currency: 'usd',
-            source: req.body.token.id,
-            description: 'Test charge from react app'
-        }, function (err, charge) {
+            const amount = req.body.total * 100
+            const charge = stripe.charges.create({
+                amount,
+                currency: 'usd',
+                source: req.body.token.id,
+                description: 'event ticket'
+            }, function (err, charge) {
             if (err) return res.sendStatus(500)
-            console.log(req.params)
-            const db = req.app.get('db');
             
-            db.cart_clear([req.session.user.id])
+            const db = req.app.get('db')
+            //const { id } = req.params
+            
+            db.clear_cart([req.session.user.id])
                 .then(cart => res.status(200).send(cart))
-            });
-        }
-        
+            // return res.sendStatus(200);
+        });
     }
-            
+        
+}
+   
             
 
            

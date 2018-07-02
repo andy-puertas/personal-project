@@ -13,16 +13,17 @@ class Dashcart extends Component {
         super(props);
         this.state = {
             cart: [],
-            total: 0,
+            total: 0
             
         }
-
+            
         this.getCart = this.getCart.bind( this )
         this.delete = this.delete.bind( this )
         this.calcTotal = this.calcTotal.bind( this )
         this.incQuant = this.incQuant.bind( this)
         this.decQuant = this.decQuant.bind( this )
     }
+
 
     componentDidMount() {
         this.getCart()
@@ -83,10 +84,11 @@ class Dashcart extends Component {
     }
 
     onToken = (token) => {
+        const {id} = this.state
         token.card = void 0;
-        axios.post(`/api/payment/${this.state.id}`, { token, amount: this.state.total /* the amount actually charged*/ })
+        axios.post(`/api/payment/${id}`, { token, amount: this.state.total })
             .then(res => {
-                this.setState({ alertToggle: true })
+                res.data
             });
     }
 

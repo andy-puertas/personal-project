@@ -42,9 +42,7 @@ export default class Slideshow extends Component {
             <img className='slide-5' src={s5} alt='logo'/>
           </div>
 
-          {/* <div className='button-container'>
-
-          </div> */}
+          
           
         </Slider>
       </div>

@@ -54,7 +54,7 @@ class Dashcart extends Component {
                 this.props.increaseQuantity(res.data[0].quantity)
                 }
             )
-            this.calcTotal()
+            //this.calcTotal()
     }
 
     decQuant(quantity, eventid) {

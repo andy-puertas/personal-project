@@ -41,9 +41,7 @@ export default function reducer(state=initialState, action) {
 
         case DECREASE_QUANTITY:
             return Object.assign({}, state, {
-                quantity: --state.quantity,
-                userid: payload.user,
-                eventid: payload.eventid
+                quantity: payload.quantity - 1
             })    
         
         case DELETE_CART + '_FULFILLED':

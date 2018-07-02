@@ -32,6 +32,7 @@ class Dashcart extends Component {
     getCart() {
         axios.get('/api/cart')
         .then( (res) => {
+            console.log(res.data)
             this.setState({
                 cart: res.data
             })
@@ -49,7 +50,7 @@ class Dashcart extends Component {
     
     incQuant( quantity, eventid) {
         console.log(quantity, eventid)
-        axios.put(`/api/cart/`, {quantity: ++quantity, eventid})
+        axios.put(`/api/cart`, {quantity: ++quantity, eventid})
            .then( res => 
             {
                 console.log(res.data)
@@ -61,7 +62,7 @@ class Dashcart extends Component {
     }
 
     decQuant(quantity, eventid) {
-           axios.put(`/api/cart/`, {quantity: --quantity, eventid} )
+           axios.put(`/api/cart`, {quantity: --quantity, eventid} )
            .then( res => 
             {
                 console.log(res.data)
@@ -84,11 +85,15 @@ class Dashcart extends Component {
     }
 
     onToken = (token) => {
-        const {id} = this.state
         token.card = void 0;
-        axios.post(`/api/payment/${id}`, { token, amount: this.state.total })
+        axios.post(`/api/payment`, { token, amount: this.state.total })
             .then(res => {
-                res.data
+                
+                this.setState({
+                    total: 0,
+                    cart: []
+                    
+                })
             });
     }
 
@@ -120,10 +125,12 @@ class Dashcart extends Component {
 
                 <p>Total: ${this.state.total}.00</p>
                 <br />    
-                <StripeCheckout
-                    token={this.onToken}
-                    stripeKey={'pk_test_ZkVDbaxn9DyyTJBKkRPjSV9S'}
-                    amount={this.state.total * 100} />
+                <div id='stripe-container'>
+                    <StripeCheckout
+                        token={this.onToken}
+                        stripeKey={'pk_test_ZkVDbaxn9DyyTJBKkRPjSV9S'}
+                        amount={this.state.total * 100} />
+                </div>    
                 </div>
             </div>
         )

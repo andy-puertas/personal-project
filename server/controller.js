@@ -117,28 +117,7 @@ module.exports = {
             res.status(500).send('error') });
     },
 
-    stripe: (req, res, next) => {
-            //convert amount to pennies
-            console.log(req)
-            console.log(req.session)
-
-            const amount = req.body.total * 100
-            const charge = stripe.charges.create({
-                amount,
-                currency: 'usd',
-                source: req.body.token.id,
-                description: 'event ticket'
-            }, function (err, charge) {
-            if (err) return res.sendStatus(500)
-            
-            const db = req.app.get('db')
-            //const { id } = req.params
-            
-            db.clear_cart([req.session.user.id])
-                .then(cart => res.status(200).send(cart))
-            // return res.sendStatus(200);
-        });
-    }
+    
         
 }
    
